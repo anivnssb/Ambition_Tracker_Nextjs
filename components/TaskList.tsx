@@ -9,7 +9,8 @@ import {
   useMarkCompleteMutation,
 } from "@/store/api";
 
-import { eachDayOfInterval, startOfWeek, endOfWeek, format } from "date-fns";
+import { startOfWeek, endOfWeek, format } from "date-fns";
+import { eachDayOfInterval } from "date-fns/eachDayOfInterval";
 import { Task } from "@/utils/types";
 
 const TaskList: React.FC = () => {
@@ -30,6 +31,7 @@ const TaskList: React.FC = () => {
       start: weekStart,
       end: weekEnd,
     });
+    console.log(daysOfWeek);
     const formattedDays: string[] = daysOfWeek.map((day: Date) =>
       format(day, "dd/MM/yyyy")
     );
