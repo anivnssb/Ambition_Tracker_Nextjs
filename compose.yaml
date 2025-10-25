@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER_NAME}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - ${DATABASE_CONTINER_PORT}:${DATABASE_CONTINER_PORT}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      HOSTNAME: 0.0.0.0
+      NODE_ENV: production
+      MYSQL_HOST: db
+      MYSQL_USER: ${DATABASE_USER_NAME}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - app-network
+    command: >
+      sh -c "./wait-for-it.sh db:${DATABASE_CONTINER_PORT} -- npx drizzle-kit push && node server.js"
+
+networks:
+  app-network:
+
+volumes:
+  db_data:
