@@ -1,13 +1,14 @@
 services:
   db:
     image: mysql:8.0
+    command: --port=${DATABASE_INTERNAL_PORT}
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
       MYSQL_DATABASE: ${DATABASE_NAME}
       MYSQL_USER: ${DATABASE_USER_NAME}
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - ${DATABASE_CONTINER_PORT}:${DATABASE_CONTINER_PORT}
+      - ${DATABASE_PORT}:${DATABASE_INTERNAL_PORT}
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -29,7 +30,7 @@ services:
     networks:
       - app-network
     command: >
-      sh -c "./wait-for-it.sh db:${DATABASE_CONTINER_PORT} -- npx drizzle-kit push && node server.js"
+      sh -c "./wait-for-it.sh db:${DATABASE_INTERNAL_PORT} -- npx drizzle-kit push && node server.js"
 
 networks:
   app-network:

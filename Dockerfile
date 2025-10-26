@@ -57,4 +57,4 @@ ENV PORT=${PORT}
 ENV HOSTNAME="0.0.0.0"
 
 # Wait for DB, run drizzle migrations, then start server
-CMD ["sh", "-c", "./wait-for-it.sh db:${DATABASE_CONTINER_PORT} -- npx drizzle-kit push && node server.js"]
+CMD ["sh", "-c", "./wait-for-it.sh db:${DATABASE_INTERNAL_PORT} -- npx drizzle-kit push && node server.js"]
