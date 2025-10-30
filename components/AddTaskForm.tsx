@@ -33,9 +33,9 @@ const AddTaskForm: React.FC = () => {
         <option value="daily">Daily</option>
         <option value="weekly">Weekly</option>
       </select>
-      <TailwindButton variant="primary" onClick={handleSubmit}>
+      <button className="button-primary" onClick={handleSubmit}>
         Add
-      </TailwindButton>
+      </button>
     </div>
   );
 };
