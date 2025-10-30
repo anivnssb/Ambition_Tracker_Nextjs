@@ -1,15 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
 import { addTask } from "@/store/slice/taskSlice";
 import { useTaskDispatch } from "@/store/hook";
 import { useAddTaskMutation } from "@/store/api";
@@ -27,17 +17,14 @@ const AddTaskForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-        <Typography textAlign="center" variant="h2">
-          Ambition Tracker
-        </Typography>
-        <TextField
-          label="Task Name"
+      <div>
+        <p>Ambition Tracker</p>
+        <input
           placeholder="Enter Task Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <FormControl fullWidth>
+        {/* <FormControl fullWidth>
           <InputLabel>Frequency</InputLabel>
           <Select
             value={frequency}
@@ -49,8 +36,8 @@ const AddTaskForm: React.FC = () => {
         </FormControl>
         <Button type="submit" variant="contained" color="secondary">
           Add
-        </Button>
-      </Box>
+        </Button> */}
+      </div>
     </form>
   );
 };

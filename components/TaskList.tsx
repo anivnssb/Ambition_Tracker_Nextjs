@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
@@ -49,38 +48,17 @@ const TaskList: React.FC = () => {
     );
   };
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 4 }}>
+    <div>
       {tasks.tasklist.map((task) => (
-        <Paper key={task.id} elevation={2} sx={{ p: 2 }}>
-          <Grid
-            container
-            alignItems="center"
-            sx={{
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Grid>
-              <Typography variant="h6">{task.task_name}</Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                sx={{ textTransform: "capitalize" }}
-              >
-                {task.frequency}
-              </Typography>
-            </Grid>
-            <Grid>
-              <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
-                <Button
-                  startIcon={
-                    checkCompleted(task) ? (
-                      <CheckCircleIcon />
-                    ) : (
-                      <CheckCircleOutlineOutlinedIcon />
-                    )
-                  }
-                  variant="outlined"
+        <div key={task.id}>
+          <div>
+            <div>
+              <p>{task.task_name}</p>
+              <p>{task.frequency}</p>
+            </div>
+            <div>
+              <div>
+                <button
                   onClick={() =>
                     markComplete({
                       id: Number(task.id),
@@ -89,20 +67,20 @@ const TaskList: React.FC = () => {
                     })
                   }
                 >
-                  {checkCompleted(task) ? "Complete" : "Mark Complete"}
-                </Button>
-                <Button
+                  {checkCompleted(task) ? "Complete " : "Not complete "}
+                </button>
+                <button
                   onClick={() => deleteTask(Number(task.id))}
                   color="error"
                 >
-                  Remove
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </Paper>
+                  &nbsp;Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
-    </Box>
+    </div>
   );
 };
 
