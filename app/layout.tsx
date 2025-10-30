@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "../css/globals.css";
-
-const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto",
-});
+import { ThemeProvider } from "@/context/theme";
 
 export const metadata: Metadata = {
   title: "Ambition Tracker",
@@ -21,10 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.variable}>
+    <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <ThemeProvider>
+          <div>
+            <Navbar />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

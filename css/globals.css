@@ -1,1 +1,45 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand: #2563eb;
+  --color-brand-light: #3b82f6;
+  --color-brand-dark: #1e3a8a;
+
+  --color-accent: #10b981;
+  --color-accent-light: #34d399;
+  --color-accent-dark: #047857;
+
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1f2937;
+
+  --color-background-light: #f9fafb;
+  --color-background-dark: #111827;
+
+  --color-text-light: #1f2937;
+  --color-text-dark: #e5e7eb;
+  --color-text-muted: #9ca3af;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-button: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+body {
+  @apply bg-(--color-background-light) text-(--color-text-light) dark:bg-(--color-background-dark) dark:text-(--color-text-dark) font-sans;
+}
+
+/*button {
+  @apply px-4 py-2 rounded-md bg-[var(--color-brand)] text-white font-medium hover:bg-[var(--color-brand-dark)] transition;
+}
+
+.card {
+  @apply bg-[var(--color-surface-light)] dark:bg-[var(--color-surface-dark)] shadow-[var(--shadow-card)] p-4 rounded-lg;
+} */

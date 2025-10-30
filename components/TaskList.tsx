@@ -11,6 +11,7 @@ import {
 import { startOfWeek, endOfWeek, format } from "date-fns";
 import { eachDayOfInterval } from "date-fns/eachDayOfInterval";
 import { Task } from "@/utils/types";
+import { TailwindButton } from "./ui/Button";
 
 const TaskList: React.FC = () => {
   const {
@@ -58,7 +59,7 @@ const TaskList: React.FC = () => {
             </div>
             <div>
               <div>
-                <button
+                <TailwindButton
                   onClick={() =>
                     markComplete({
                       id: Number(task.id),
@@ -68,13 +69,13 @@ const TaskList: React.FC = () => {
                   }
                 >
                   {checkCompleted(task) ? "Complete " : "Not complete "}
-                </button>
-                <button
+                </TailwindButton>
+                <TailwindButton
                   onClick={() => deleteTask(Number(task.id))}
                   color="error"
                 >
                   &nbsp;Remove
-                </button>
+                </TailwindButton>
               </div>
             </div>
           </div>
