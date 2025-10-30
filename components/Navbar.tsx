@@ -5,7 +5,7 @@ const settings = ["Account", "Logout"];
 
 const Navbar: React.FC = () => {
   return (
-    <div className="bg-[var(--color-background-light)] dark:bg-[var(--color-background-dark)] border-b border-b-[var(--color-border-light)] dark:border-b-[var(--color-border-dark)] flex justify-between p-4">
+    <div className="bg-background-light dark:bg-background-dark border-b border-b-border-light dark:border-b-border-dark flex justify-between p-4">
       <p className="text-black dark:text-white"> Tracker</p>
     </div>
   );

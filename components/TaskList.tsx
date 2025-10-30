@@ -9,7 +9,6 @@ import {
 import { startOfWeek, endOfWeek, format } from "date-fns";
 import { eachDayOfInterval } from "date-fns/eachDayOfInterval";
 import { Task } from "@/utils/types";
-import { TailwindButton } from "./buttons/Button";
 
 const TaskList: React.FC = () => {
   const {
@@ -47,19 +46,27 @@ const TaskList: React.FC = () => {
     );
   };
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center mt-16">
       {tasks.tasklist.map((task) => (
         <div
           key={task.id}
-          className="flex justify-between w-1/2 bg-(--color-brand-light) dark:bg-(--color-brand-dark)"
+          className="flex justify-between w-1/2 items-center bg-background-light dark:bg-background-dark border-b border-b-border-light dark:border-b-border-dark  mb-2 p-4 shadow relative"
         >
-          <div className="flex justify-between">
-            <p>{task.task_name}</p>
-            <p>{task.frequency}</p>
-          </div>
-
           <div>
-            <TailwindButton
+            <p>{task.task_name}</p>
+          </div>
+          <span
+            className={`absolute right-2/3 ${
+              task.frequency === "daily"
+                ? "bg-brand text-text-dark"
+                : "bg-brand-dark"
+            } pl-2 pr-2 pb-1 pt-1 rounded`}
+          >
+            {task.frequency}
+          </span>
+          <div className="flex justify-around gap-2">
+            <button
+              className="button-primary"
               onClick={() =>
                 markComplete({
                   id: Number(task.id),
@@ -67,16 +74,15 @@ const TaskList: React.FC = () => {
                   date: format(new Date(), "dd/MM/yyyy"),
                 })
               }
-              variant="primary"
             >
               {checkCompleted(task) ? "Complete " : "Not complete "}
-            </TailwindButton>
-            <TailwindButton
+            </button>
+            <button
+              className="button-outline"
               onClick={() => deleteTask(Number(task.id))}
-              variant="outline"
             >
               &nbsp;Remove
-            </TailwindButton>
+            </button>
           </div>
         </div>
       ))}

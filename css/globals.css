@@ -20,6 +20,11 @@
   --color-text-tertiary-light: #9ca3af; /* Placeholder, helper text */
   --color-text-inverse-light: #ffffff; /* For buttons on brand bg */
 
+  --color-brand-hover-light: #0065ff;
+  --color-brand-active-light: #0747a6;
+  --color-secondary-hover-light: #8777d9;
+  --color-secondary-active-light: #5243aa;
+
   --color-accent-light: #36b37e; /* Success/green */
   --color-warning-light: #ffab00;
   --color-danger-light: #ff5630;
@@ -33,9 +38,11 @@
 
   --color-brand-dark: #4c9aff;
   --color-brand-hover-dark: #2684ff;
+  --color-brand-active-dark: #1b74e4;
 
   --color-secondary-dark: #998dd9;
   --color-secondary-hover-dark: #a7a1e0;
+  --color-secondary-active-dark: #7a6dd6;
 
   --color-text-dark: #f4f5f7; /* Main text */
   --color-text-secondary-dark: #b3bac5;
@@ -61,23 +68,19 @@
 }
 
 /* ✅ Correct Tailwind variable usage */
-body {
+/* body {
   @apply bg-[var(--color-background-light)] dark:bg-[var(--color-background-dark)]
    text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] font-sans;
-}
-
-/* ✅ Optional UI Examples
-button {
-  @apply px-4 py-2 rounded-md 
-         bg-[var(--color-brand)] text-[var(--color-text-inverse-light)] 
-         hover:bg-[var(--color-brand-hover)] 
-         dark:bg-[var(--color-brand-dark)] dark:text-[var(--color-text-inverse-dark)] 
-         dark:hover:bg-[var(--color-brand-hover-dark)] 
-         font-medium transition;
-}
-
-.card {
-  @apply bg-[var(--color-surface-light)] dark:bg-[var(--color-surface-dark)] 
-         border border-[var(--color-border-light)] dark:border-[var(--color-border-dark)]
-         shadow-[var(--shadow-card)] p-4 rounded-lg;
 } */
+
+@layer components {
+  .button-primary {
+    @apply px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer bg-brand text-text-dark  shadow-button hover:bg-brand-hover-light;
+  }
+  .button-secondary {
+    @apply px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer bg-surface-light text-text-dark border border-gray-300 hover:bg-gray-50;
+  }
+  .button-outline {
+    @apply px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer border border-brand text-brand hover:bg-brand/10;
+  }
+}
