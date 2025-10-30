@@ -3,42 +3,40 @@ import React, { useState } from "react";
 import { addTask } from "@/store/slice/taskSlice";
 import { useTaskDispatch } from "@/store/hook";
 import { useAddTaskMutation } from "@/store/api";
+import { TailwindButton } from "./buttons/Button";
 
 const AddTaskForm: React.FC = () => {
   const [addTask, { isLoading }] = useAddTaskMutation();
   const [name, setName] = useState<string>("");
   const [frequency, setFrequency] = useState<"daily" | "weekly">("daily");
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (name.trim()) {
       addTask({ task_name: name, frequency });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <p>Ambition Tracker</p>
-        <input
-          placeholder="Enter Task Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {/* <FormControl fullWidth>
-          <InputLabel>Frequency</InputLabel>
-          <Select
-            value={frequency}
-            onChange={(e) => setFrequency(e.target.value)}
-          >
-            <MenuItem value="daily">Daily</MenuItem>
-            <MenuItem value="weekly">Weekly</MenuItem>
-          </Select>
-        </FormControl>
-        <Button type="submit" variant="contained" color="secondary">
-          Add
-        </Button> */}
-      </div>
-    </form>
+    <div>
+      <p>Ambition Tracker</p>
+      <input
+        placeholder="Enter Task Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="p-2 w-md rounded border border-[var(--color-border-light)]"
+      />
+
+      <select
+        value={frequency}
+        onChange={(e) => setFrequency(e.target.value as typeof frequency)}
+        className="p-2 w-md rounded border border-[var(--color-border-light)]"
+      >
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+      </select>
+      <TailwindButton variant="primary" onClick={handleSubmit}>
+        Add
+      </TailwindButton>
+    </div>
   );
 };
 

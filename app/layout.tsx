@@ -18,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <div>
-            <Navbar />
-          </div>
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>

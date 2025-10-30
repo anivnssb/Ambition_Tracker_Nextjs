@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
   useGetTasksQuery,
   useDeleteTaskMutation,
@@ -11,7 +9,7 @@ import {
 import { startOfWeek, endOfWeek, format } from "date-fns";
 import { eachDayOfInterval } from "date-fns/eachDayOfInterval";
 import { Task } from "@/utils/types";
-import { TailwindButton } from "./ui/Button";
+import { TailwindButton } from "./buttons/Button";
 
 const TaskList: React.FC = () => {
   const {
@@ -49,35 +47,36 @@ const TaskList: React.FC = () => {
     );
   };
   return (
-    <div>
+    <div className="flex flex-col items-center ">
       {tasks.tasklist.map((task) => (
-        <div key={task.id}>
+        <div
+          key={task.id}
+          className="flex justify-between w-1/2 bg-(--color-brand-light) dark:bg-(--color-brand-dark)"
+        >
+          <div className="flex justify-between">
+            <p>{task.task_name}</p>
+            <p>{task.frequency}</p>
+          </div>
+
           <div>
-            <div>
-              <p>{task.task_name}</p>
-              <p>{task.frequency}</p>
-            </div>
-            <div>
-              <div>
-                <TailwindButton
-                  onClick={() =>
-                    markComplete({
-                      id: Number(task.id),
-                      remove: checkCompleted(task),
-                      date: format(new Date(), "dd/MM/yyyy"),
-                    })
-                  }
-                >
-                  {checkCompleted(task) ? "Complete " : "Not complete "}
-                </TailwindButton>
-                <TailwindButton
-                  onClick={() => deleteTask(Number(task.id))}
-                  color="error"
-                >
-                  &nbsp;Remove
-                </TailwindButton>
-              </div>
-            </div>
+            <TailwindButton
+              onClick={() =>
+                markComplete({
+                  id: Number(task.id),
+                  remove: checkCompleted(task),
+                  date: format(new Date(), "dd/MM/yyyy"),
+                })
+              }
+              variant="primary"
+            >
+              {checkCompleted(task) ? "Complete " : "Not complete "}
+            </TailwindButton>
+            <TailwindButton
+              onClick={() => deleteTask(Number(task.id))}
+              variant="outline"
+            >
+              &nbsp;Remove
+            </TailwindButton>
           </div>
         </div>
       ))}

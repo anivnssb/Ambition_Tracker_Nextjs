@@ -1,14 +1,12 @@
 import * as React from "react";
-import ThemeToggle from "./ui/ThemeToggleButton";
 
 const pages = ["Create Notes"];
 const settings = ["Account", "Logout"];
 
 const Navbar: React.FC = () => {
   return (
-    <div style={{ background: "red", width: "100%", position: "fixed" }}>
-      Navbar
-      <ThemeToggle />
+    <div className="bg-[var(--color-background-light)] dark:bg-[var(--color-background-dark)] border-b border-b-[var(--color-border-light)] dark:border-b-[var(--color-border-dark)] flex justify-between p-4">
+      <p className="text-black dark:text-white"> Tracker</p>
     </div>
   );
 };
