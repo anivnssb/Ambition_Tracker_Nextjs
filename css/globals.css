@@ -68,10 +68,17 @@
 }
 
 /* ✅ Correct Tailwind variable usage */
-/* body {
-  @apply bg-[var(--color-background-light)] dark:bg-[var(--color-background-dark)]
-   text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] font-sans;
-} */
+body {
+  @apply bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans;
+}
+
+@layer base {
+  input,
+  select,
+  button {
+    @apply focus:outline-blue-500 dark:focus:outline-black dark:focus:border-white;
+  }
+}
 
 @layer components {
   .button-primary {
@@ -82,5 +89,8 @@
   }
   .button-outline {
     @apply px-4 py-2 rounded-xl font-medium transition-colors cursor-pointer border border-brand text-brand hover:bg-brand/10;
+  }
+  .input {
+    @apply p-2 rounded border  border-border-light dark:border-border-dark;
   }
 }

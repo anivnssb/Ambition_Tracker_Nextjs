@@ -55,13 +55,7 @@ const TaskList: React.FC = () => {
           <div>
             <p>{task.task_name}</p>
           </div>
-          <span
-            className={`absolute right-2/3 ${
-              task.frequency === "daily"
-                ? "bg-brand text-text-dark"
-                : "bg-brand-dark"
-            } pl-2 pr-2 pb-1 pt-1 rounded`}
-          >
+          <span className="absolute right-2/3 bg-brand dark:bg-brand-dark text-text-dark dark:text-text-light pl-2 pr-2 pb-1 pt-1 rounded">
             {task.frequency}
           </span>
           <div className="flex justify-around gap-2">

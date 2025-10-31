@@ -22,13 +22,13 @@ const AddTaskForm: React.FC = () => {
         placeholder="Enter Task Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="p-2 w-md rounded border border-[var(--color-border-light)]"
+        className=" w-md input"
       />
 
       <select
         value={frequency}
         onChange={(e) => setFrequency(e.target.value as typeof frequency)}
-        className="p-2 w-md rounded border border-[var(--color-border-light)]"
+        className=" w-md input"
       >
         <option value="daily">Daily</option>
         <option value="weekly">Weekly</option>
