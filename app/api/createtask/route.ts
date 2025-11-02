@@ -3,6 +3,7 @@ import { taskTable } from "@/model/schema";
 import { createTask } from "@/db/task";
 import { withMiddleware } from "@/apiMiddlewares/middlewareWraper";
 import { CreateTask_Payload } from "@/apiMiddlewares/types";
+import { promptParsing } from "@/apiMiddlewares/middleware";
 
 const createHandler = async (
   request: NextRequest,
@@ -19,4 +20,4 @@ const createHandler = async (
 };
 
 export const POST = async (request: NextRequest) =>
-  withMiddleware<CreateTask_Payload>(createHandler, [])(request);
+  withMiddleware<CreateTask_Payload>(createHandler, [promptParsing])(request);
