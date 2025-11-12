@@ -1,3 +1,7 @@
+export enum Frequency {
+  Daily = "daily",
+  Weekly = "weekly",
+}
 export interface Task {
   id: string;
   task_name: string;

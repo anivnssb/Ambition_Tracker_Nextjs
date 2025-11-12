@@ -1,14 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { addTask } from "@/store/slice/taskSlice";
-import { useTaskDispatch } from "@/store/hook";
 import { useAddTaskMutation } from "@/store/api";
-import { TailwindButton } from "./buttons/Button";
+import { Frequency } from "@/types/types";
 
 const AddTaskForm: React.FC = () => {
   const [addTask, { isLoading }] = useAddTaskMutation();
   const [name, setName] = useState<string>("");
-  const [frequency, setFrequency] = useState<"daily" | "weekly">("daily");
+  const [frequency, setFrequency] = useState<Frequency>(Frequency.Daily);
   const handleSubmit = () => {
     if (name.trim()) {
       addTask({ task_name: name, frequency });
@@ -17,7 +15,7 @@ const AddTaskForm: React.FC = () => {
 
   return (
     <div>
-      <p>Ambition Tracker</p>
+      <h1>Ambition Tracker</h1>
       <input
         placeholder="Enter Task Name"
         value={name}
@@ -30,8 +28,8 @@ const AddTaskForm: React.FC = () => {
         onChange={(e) => setFrequency(e.target.value as typeof frequency)}
         className=" w-md input"
       >
-        <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
+        <option value={Frequency.Daily}>Daily</option>
+        <option value={Frequency.Weekly}>Weekly</option>
       </select>
       <button className="button-primary" onClick={handleSubmit}>
         Add

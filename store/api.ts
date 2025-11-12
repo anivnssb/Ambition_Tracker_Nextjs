@@ -1,5 +1,5 @@
 // store/api.ts
-import { Task } from "@/utils/types";
+import { Task } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const taskApi = createApi({

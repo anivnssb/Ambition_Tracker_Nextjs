@@ -8,7 +8,7 @@ import {
 
 import { startOfWeek, endOfWeek, format } from "date-fns";
 import { eachDayOfInterval } from "date-fns/eachDayOfInterval";
-import { Task } from "@/utils/types";
+import { Frequency, Task } from "@/types/types";
 
 const TaskList: React.FC = () => {
   const {
@@ -36,10 +36,10 @@ const TaskList: React.FC = () => {
   };
   const checkCompleted = (task: Task): boolean => {
     return (
-      (task.frequency === "daily" &&
+      (task.frequency === Frequency.Daily &&
         format(new Date(), "dd/MM/yyyy") ===
           task.completed_dates.dates[task.completed_dates.dates.length - 1]) ||
-      (task.frequency === "weekly" &&
+      (task.frequency === Frequency.Weekly &&
         thisWeek().includes(
           task.completed_dates.dates[task.completed_dates.dates.length - 1]
         ))
