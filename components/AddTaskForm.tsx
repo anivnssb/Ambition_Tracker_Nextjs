@@ -14,7 +14,7 @@ const AddTaskForm: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col  items-center gap-2">
       <h1>Ambition Tracker</h1>
       <input
         placeholder="Enter Task Name"

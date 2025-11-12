@@ -2,64 +2,20 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* 🌈 Base Brand Colors */
-  --color-brand: #0052cc; /* Primary Blue */
+  --color-brand: #0052cc;
   --color-brand-hover: #0065ff;
 
-  --color-secondary: #6554c0; /* Subtle Purple accent */
-  --color-secondary-hover: #8777d9;
-
-  /* 🌞 Light Mode */
   --color-background-light: #ffffff;
-  --color-surface-light: #f4f5f7; /* Card / Panel background */
-  --color-surface-muted-light: #ebecf0;
+  --color-text-light: #172b4d;
   --color-border-light: #dfe1e6;
-
-  --color-text-light: #172b4d; /* Main text */
-  --color-text-secondary-light: #6b778c; /* Muted text */
-  --color-text-tertiary-light: #9ca3af; /* Placeholder, helper text */
-  --color-text-inverse-light: #ffffff; /* For buttons on brand bg */
-
   --color-brand-hover-light: #0065ff;
-  --color-brand-active-light: #0747a6;
-  --color-secondary-hover-light: #8777d9;
-  --color-secondary-active-light: #5243aa;
+  --color-surface-light: #f4f5f7;
 
-  --color-accent-light: #36b37e; /* Success/green */
-  --color-warning-light: #ffab00;
-  --color-danger-light: #ff5630;
-  --color-info-light: #00b8d9;
-
-  /* 🌚 Dark Mode */
-  --color-background-dark: #000000;
-  --color-surface-dark: #111214; /* Slightly lifted from black */
-  --color-surface-muted-dark: #1b1d1f;
-  --color-border-dark: #2b2d31;
-
-  --color-brand-dark: #4c9aff;
   --color-brand-hover-dark: #2684ff;
-  --color-brand-active-dark: #1b74e4;
-
-  --color-secondary-dark: #998dd9;
-  --color-secondary-hover-dark: #a7a1e0;
-  --color-secondary-active-dark: #7a6dd6;
-
-  --color-text-dark: #f4f5f7; /* Main text */
-  --color-text-secondary-dark: #b3bac5;
-  --color-text-tertiary-dark: #9ba5b0;
-  --color-text-inverse-dark: #172b4d;
-
-  --color-accent-dark: #57d9a3;
-  --color-warning-dark: #ffe380;
-  --color-danger-dark: #ff7452;
-  --color-info-dark: #00c7e5;
-
-  /* 🧩 Shared Tokens */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --color-surface-dark: #111214;
+  --color-background-dark: #000000;
+  --color-text-dark: #f4f5f7;
+  --color-border-dark: #2b2d31;
 
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-button: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -67,7 +23,6 @@
   --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
 }
 
-/* ✅ Correct Tailwind variable usage */
 body {
   @apply bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans;
 }
