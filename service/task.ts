@@ -1,5 +1,5 @@
 import { taskTable } from "@/model/schema";
-import { db } from "./db";
+import { db } from "../db/db";
 import { MySqlRawQueryResult } from "drizzle-orm/mysql2";
 import { eq } from "drizzle-orm";
 

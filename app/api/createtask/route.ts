@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { taskTable } from "@/model/schema";
-import { createTask } from "@/db/task";
+import { createTask } from "@/service/task";
 
 export const POST = async (request: NextRequest) => {
   const { task_name, frequency } = await request.json();

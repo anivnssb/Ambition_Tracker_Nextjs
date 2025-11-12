@@ -1,4 +1,4 @@
-import { getCompletedDatesById, toggleTaskComplete } from "@/db/task";
+import { getCompletedDatesById, toggleTaskComplete } from "@/service/task";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Params {

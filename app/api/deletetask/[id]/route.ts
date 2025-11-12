@@ -1,4 +1,4 @@
-import { deleteTask } from "@/db/task";
+import { deleteTask } from "@/service/task";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Params {
